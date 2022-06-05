@@ -1,15 +1,12 @@
 $(function() {
     $(document).ready(function() {
-        //прикрепляем клик по заголовкам acc-head
         $('.faq__box-ask').on('click', accordeon);
     });
 
-    function accordeon() {
-        //скрываем все кроме того, что должны открыть
+    function accordeon() {        
         $('.faq__box-answer').not($(this).next()).slideUp(300);
         $(this).toggleClass("active");
         $(".faq__box-ask").not(this).removeClass("active");
-        // открываем или скрываем блок под заголовоком, по которому кликнули
         $(this).next().slideToggle(300);
     }
 
@@ -36,5 +33,10 @@ $(function() {
         $('.menu__list').toggleClass('menu__list--active');
         $('.menu__btn').toggleClass('menu__btn--active');
     });
+
+    window.addEventListener("scroll", function() {
+        var header = document.querySelector(".header__top-inner")
+        header.classList.toggle("scroll-active", window.scrollY > 0);
+    })
 
 });
